@@ -10,6 +10,7 @@
     <!-- 接口绑定的映射路径 -->
 	<mappers>
 		<mapper class="com.rj.bd.login.dao.LoginMapper"/>
+		<mapper class="com.rj.bd.user.dao.UserMapper"/>
 	</mappers>
 
 </configuration>  

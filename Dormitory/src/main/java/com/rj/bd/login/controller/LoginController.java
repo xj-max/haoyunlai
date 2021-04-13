@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,7 +20,8 @@ import com.rj.bd.login.service.LoginService;
  * @time 2021--04--12
  */
 @Controller
-@RequestMapping("/user")
+@CrossOrigin
+@RequestMapping("/Login")
 public class LoginController {
 	@Autowired
 	private LoginService loginService;
@@ -36,7 +38,8 @@ public class LoginController {
 		Map<String, Object> json = new HashMap<String, Object>();
 		String u_name=request.getParameter("u_name");
 		String u_password=request.getParameter("u_password");
-		
+		System.out.println("username:"+u_name);
+		System.out.println("password:"+u_password);
 		//判空
 		
 		if (u_name==null||u_name.equals("")) {
@@ -46,14 +49,14 @@ public class LoginController {
 		}
 		
 		if (u_password==null || u_password.equals("")) {
-			json.put("code", -1);
+			json.put("code", -2);
 			json.put("msg", "请输入密码");
 			return json;
 		}
 		
 		Login login = loginService.queryUserByNameAndPass(u_name,u_password);
 		if (login==null) {
-			json.put("code", -1);
+			json.put("code", -3);
 			json.put("msg", "用户名或密码错误");
 			return json;
 		}
