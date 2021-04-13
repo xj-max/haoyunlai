@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.rj.bd.dormitory.entity.Dormitory;
 import com.rj.bd.user.entity.User;
 import com.rj.bd.user.service.UserService;
 
@@ -52,6 +53,7 @@ public class UserController {
 	}
 		json.put("code", 200);
 		json.put("msg", "查询成功");
+		json.put("data",list);
 		return json;
 	}
 	
@@ -155,7 +157,9 @@ public class UserController {
 		user.setU_id(u_id);
 		user.setU_name(u_name);
 		user.setU_password(u_password);
-		user.setDormitory_id(dormitory_id);
+		Dormitory dormitory=new Dormitory();
+		dormitory.setDormitory_id(dormitory_id);
+		user.setDormitory(dormitory);
 		user.setU_tel(u_tel);
 		userService.update(user);
 		System.out.println(user.toString());
@@ -203,7 +207,9 @@ public class UserController {
 		user.setU_name(u_name);
 		user.setU_password(u_password);
 		user.setU_tel(u_tel);
-		user.setDormitory_id(dormitory_id);
+		Dormitory dormitory=new Dormitory();
+		dormitory.setDormitory_id(dormitory_id);
+		user.setDormitory(dormitory);
 		
 		userService.add(user);
 		json.put("code", 200);

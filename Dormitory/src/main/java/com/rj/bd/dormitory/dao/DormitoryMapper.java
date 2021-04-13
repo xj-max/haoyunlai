@@ -20,5 +20,8 @@ public interface DormitoryMapper {
 	
 	@Insert("insert into dormitory(dormitory_name,dormitory_count) values (#{dormitory_name},#{dormitory_count})")
 	void add(Dormitory dormitory);
-
+	
+	@Select("select * from dormitory where dormitory_id = #{dormitory_id}")
+	Dormitory queryDormitoryById(int dormitory_id);
+	
 }

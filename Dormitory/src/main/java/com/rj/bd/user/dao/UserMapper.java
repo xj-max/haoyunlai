@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.One;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
@@ -11,7 +14,15 @@ import org.springframework.stereotype.Repository;
 import com.rj.bd.user.entity.User;
 @Repository("userMapper")
 public interface UserMapper {
-	@Select("select u.*,d.dormitory_name from user u,dormitory d where u.dormitory_id=d.dormitory_id")
+	@Results({
+		@Result(column="u_id",property="u_id"),
+		@Result(column="u_name",property="u_name"),
+		@Result(column="u_password",property="u_password"),
+		@Result(column="u_imgs",property="u_imgs"),
+		@Result(column="u_tel",property="u_tel"),
+		@Result(column="dormitory_id",property="dormitory",one=@One(select="com.rj.bd.dormitory.dao.DormitoryMapper.queryAll"))
+	})
+	@Select("select * from user")
 	List<User> queryAll();
 	
 	@Delete("DELETE FROM Charge WHERE u_id = #{u_id}")
