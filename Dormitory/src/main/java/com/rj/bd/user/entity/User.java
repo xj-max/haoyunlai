@@ -1,5 +1,7 @@
 package com.rj.bd.user.entity;
 
+import com.rj.bd.dormitory.entity.Dormitory;
+
 import lombok.Data;
 
 /**
@@ -14,5 +16,5 @@ public class User {
 	private String u_password;
 	private String u_imgs;
 	private String u_tel;
-	private int dormitory_id;
+	private Dormitory dormitory;
 }
