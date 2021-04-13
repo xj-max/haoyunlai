@@ -20,7 +20,7 @@ public interface UserMapper {
 		@Result(column="u_password",property="u_password"),
 		@Result(column="u_imgs",property="u_imgs"),
 		@Result(column="u_tel",property="u_tel"),
-		@Result(column="dormitory_id",property="dormitory",one=@One(select="com.rj.bd.dormitory.dao.DormitoryMapper.queryAll"))
+		@Result(column="dormitory_id",property="dormitory",one=@One(select="com.rj.bd.dormitory.dao.DormitoryMapper.queryDormitoryById"))
 	})
 	@Select("select * from user")
 	List<User> queryAll();
