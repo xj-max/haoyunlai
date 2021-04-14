@@ -27,6 +27,10 @@ public class ClassesService {
 		classesMapper.deleteStudentAndByCid(c_id);
 		
 	}
+	public Classes queryClassesById(int c_id) {
+		
+		return classesMapper.queryClassesById(c_id);
+	}
 
 
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rj.bd.classes.entity.Classes;
 import com.rj.bd.classes.service.ClassesService;
+import com.rj.bd.student.entity.Student;
 
 
 /**
@@ -118,5 +119,41 @@ public class ClassesController {
 		
 		return json;
 	}
+	
+	
+	/**
+	 * @desc 进入班级修改页面
+	 * 
+	 * 
+	 */
+	@RequestMapping("/editPage")
+	public Map<String, Object> editPage(HttpServletRequest request){
+		Map<String, Object> json = new HashMap<String, Object>();
+		String id = request.getParameter("c_id");
+		int c_id  =Integer.parseInt(id);
+		
+		if (c_id==0) {
+			json.put("code", -1);
+			json.put("msg", "请选择班级");
+			return json;
+			
+		}
+		
+		Classes classes = classesService.queryClassesById(c_id);
+		
+		if (classes==null) {
+			json.put("code", -1);
+			json.put("msg","获取班级信息失败");
+			return json;
+		}
+		
+		
+		json.put("code", 200);
+		json.put("msg", "查询成功");
+		json.put("data", classes);
+			return json;
+	}
+	
+	
 	
 }

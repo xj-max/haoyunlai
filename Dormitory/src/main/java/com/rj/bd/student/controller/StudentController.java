@@ -24,7 +24,7 @@ import com.rj.bd.student.service.StudentService;
  */
 @Controller
 @ResponseBody
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/student")
 public class StudentController {
 
@@ -97,6 +97,7 @@ public class StudentController {
 	@RequestMapping("/edit")
 	public Map<String, Object> edit(HttpServletRequest request){
 		Map<String, Object> json = new HashMap<String, Object>();
+		System.out.println("开始修改");
 		String sid = request.getParameter("s_id");
 		int s_id  =Integer.parseInt(sid);
 		String s_name = request.getParameter("s_name");

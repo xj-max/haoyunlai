@@ -25,5 +25,9 @@ public interface ClassesMapper {
 	void add(Classes classes);
 
 	
+	@Select("select *from classes where c_id = #{c_id}")
+	Classes queryClassesById(int c_id);
+
+	
 
 }
