@@ -31,6 +31,10 @@ public class ClassesService {
 		
 		return classesMapper.queryClassesById(c_id);
 	}
+	public void update(Classes classes) {
+		// TODO Auto-generated method stub
+		classesMapper.update(classes);
+	}
 
 
 }

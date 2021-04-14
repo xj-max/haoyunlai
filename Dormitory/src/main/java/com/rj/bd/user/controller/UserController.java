@@ -57,6 +57,7 @@ public class UserController {
 	 * @throws SQLException 
 	 * @throws IOException 
 	 */
+	@ResponseBody
 	@RequestMapping(value="/query",method=RequestMethod.GET)
 	public Map<String, Object> queryUser(HttpServletRequest request,HttpServletResponse response) throws SQLException, IOException{
 	Map<String, Object> json = new HashMap<String, Object>();
@@ -87,6 +88,7 @@ public class UserController {
 	 * @param request
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping(value="/delete",method=RequestMethod.GET)
 	public Map<String, Object>deletet(HttpServletRequest request){
 		System.out.println("delete");
@@ -115,7 +117,7 @@ public class UserController {
 	 * @param request
 	 * @return
 	 */
-	
+	@ResponseBody
 	@RequestMapping(value="/editPage",method=RequestMethod.GET)
 	public Map<String, Object> editPage(HttpServletRequest request){
 		System.out.println("editPage---->");
@@ -151,7 +153,7 @@ public class UserController {
 	 * @return
 	 * @throws IOException 
 	 */
-	
+	@ResponseBody
 	@RequestMapping(value="/edit",method=RequestMethod.GET)
 	public Map<String, Object> edit(HttpServletRequest request) throws IOException{
 		System.out.println("edit---->");
@@ -211,7 +213,7 @@ public class UserController {
 	 * @param request
 	 * @return
 	 */
-	
+	@ResponseBody
 	@RequestMapping(value="/addPage",method=RequestMethod.GET)
 	public Map<String, Object> addPage(HttpServletRequest request){
 		System.out.println("addPage--------->");
@@ -238,6 +240,7 @@ public class UserController {
 	 * @return
 	 */
 	@CrossOrigin
+	@ResponseBody
 	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public Map<String, Object> add( User user, HttpServletRequest request){
 		System.out.println("add--------->");

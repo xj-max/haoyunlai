@@ -11,7 +11,7 @@ import lombok.Data;
 public class Classes {
 
 	private int c_id;
-	private String c_sum;
+	private String c_tel;
 	private String c_name;
 	private String c_counselor;
 }

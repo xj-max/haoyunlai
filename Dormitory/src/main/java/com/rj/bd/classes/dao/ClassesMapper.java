@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.rj.bd.classes.entity.Classes;
@@ -21,12 +22,15 @@ public interface ClassesMapper {
 	
 	
 
-	@Insert("insert into classes(c_sum,c_name,c_counselor) values (#{c_sum},#{c_name},#{c_counselor})")
+	@Insert("insert into classes(c_tel,c_name,c_counselor) values (#{c_tel},#{c_name},#{c_counselor})")
 	void add(Classes classes);
 
 	
 	@Select("select *from classes where c_id = #{c_id}")
 	Classes queryClassesById(int c_id);
+	
+	@Update("update classes set c_name=#{c_name},c_counselor=#{c_counselor},c_tel=#{c_tel} where c_id =#{c_id}")
+	void update(Classes classes);
 
 	
 
