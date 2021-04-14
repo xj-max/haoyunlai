@@ -113,13 +113,6 @@ public class DormController {
 		String dorm_number = request.getParameter("dorm_number");
 		
 		
-//		String u_name = request.getParameter("u_name");
-//		String u_password = request.getParameter("u_password");
-//		String u_tel = request.getParameter("u_tel");
-//		String id = request.getParameter("dormitory_id");
-//		System.out.println(u_id+"------>"+u_name+"------>"+u_password+"------>"+u_tel+"------>"+id);
-//		int dormitory_id  =Integer.parseInt(id);
-//		System.out.println(u_id+"------>"+u_name+"------>"+u_password+"------>"+u_tel+"------>"+dormitory_id);
 		
 		if (dorm_number==null || dorm_number.equals("")) {
 			json.put("code", -1);
