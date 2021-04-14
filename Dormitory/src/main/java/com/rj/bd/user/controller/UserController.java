@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mysql.jdbc.Blob;
@@ -56,7 +57,7 @@ public class UserController {
 	 * @throws SQLException 
 	 * @throws IOException 
 	 */
-	@RequestMapping("/query")
+	@RequestMapping(value="/query",method=RequestMethod.GET)
 	public Map<String, Object> queryUser(HttpServletRequest request,HttpServletResponse response) throws SQLException, IOException{
 	Map<String, Object> json = new HashMap<String, Object>();
 	List<User> list = userService.queryAll();
@@ -86,7 +87,7 @@ public class UserController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping("/delete")
+	@RequestMapping(value="/delete",method=RequestMethod.GET)
 	public Map<String, Object>deletet(HttpServletRequest request){
 		System.out.println("delete");
 	Map<String, Object> json = new HashMap<String, Object>();
@@ -115,7 +116,7 @@ public class UserController {
 	 * @return
 	 */
 	
-	@RequestMapping("/editPage")
+	@RequestMapping(value="/editPage",method=RequestMethod.GET)
 	public Map<String, Object> editPage(HttpServletRequest request){
 		System.out.println("editPage---->");
 		Map<String, Object> json = new HashMap<String, Object>();
@@ -151,7 +152,7 @@ public class UserController {
 	 * @throws IOException 
 	 */
 	
-	@RequestMapping("/edit")
+	@RequestMapping(value="/edit",method=RequestMethod.GET)
 	public Map<String, Object> edit(HttpServletRequest request) throws IOException{
 		System.out.println("edit---->");
 		Map<String, Object> json = new HashMap<String, Object>();
@@ -211,7 +212,7 @@ public class UserController {
 	 * @return
 	 */
 	
-	@RequestMapping("/addPage")
+	@RequestMapping(value="/addPage",method=RequestMethod.GET)
 	public Map<String, Object> addPage(HttpServletRequest request){
 		System.out.println("addPage--------->");
 		Map<String, Object> json = new HashMap<String, Object>();
@@ -237,7 +238,7 @@ public class UserController {
 	 * @return
 	 */
 	@CrossOrigin
-	@RequestMapping("/add")
+	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public Map<String, Object> add( User user, HttpServletRequest request){
 		System.out.println("add--------->");
 		Map<String, Object> json = new HashMap<String, Object>();
