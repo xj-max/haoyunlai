@@ -1,5 +1,7 @@
 package com.rj.bd.dorm.entity;
 
+import com.rj.bd.dormitory.entity.Dormitory;
+
 import lombok.Data;
 
 /**
@@ -12,7 +14,7 @@ public class Dorm {
 
 	private int dorm_id;
 	private String dorm_number;
-	private int dormitory_id;
+	private Dormitory dormitory;
 	private int dorm_sum;
 	private int dorm_count;
 }
