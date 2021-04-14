@@ -25,7 +25,7 @@ public interface HygieneMapper {
 	void update(Hygiene hygiene);
 	
 	
-	@Insert("insert into hygiene(h_level,h_time,dorm_id) values (#{h_level},#{h_time},#{dorm_id})")
+	@Insert("insert into hygiene(h_level,h_time,dorm_id) values (#{h_level},#{h_time},#{dorm.dorm_id})")
 	void add(Hygiene hygiene);
 
 }
