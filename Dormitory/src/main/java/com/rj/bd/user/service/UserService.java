@@ -20,7 +20,7 @@ public class UserService {
 	userMapper.deletet(u_id);
 		
 	}
-	public User queryUserById(int u_id) {
+	public List<User> queryUserById(int u_id) {
 		
 		return userMapper.queryUserById(u_id);
 	}

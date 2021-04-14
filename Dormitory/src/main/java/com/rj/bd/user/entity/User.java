@@ -1,5 +1,6 @@
 package com.rj.bd.user.entity;
 
+
 import com.rj.bd.dormitory.entity.Dormitory;
 
 import lombok.Data;

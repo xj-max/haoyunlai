@@ -20,7 +20,7 @@ public interface UserMapper {
 		@Result(column="u_password",property="u_password"),
 		@Result(column="u_imgs",property="u_imgs"),
 		@Result(column="u_tel",property="u_tel"),
-		@Result(column="dormitory_id",property="dormitory",one=@One(select="com.rj.bd.dormitory.dao.DormitoryMapper.queryAll"))
+		@Result(column="dormitory_id",property="dormitory",one=@One(select="com.rj.bd.dormitory.dao.DormitoryMapper.queryDormitoryById"))
 	})
 	@Select("select * from user")
 	List<User> queryAll();
@@ -31,17 +31,24 @@ public interface UserMapper {
 	@Delete("DELETE FROM USER WHERE u_id = #{u_id}")
 	void deletet(int u_id);
 	
-	
+	@Results({
+		@Result(column="u_id",property="u_id"),
+		@Result(column="u_name",property="u_name"),
+		@Result(column="u_password",property="u_password"),
+		@Result(column="u_imgs",property="u_imgs"),
+		@Result(column="u_tel",property="u_tel"),
+		@Result(column="dormitory_id",property="dormitory",one=@One(select="com.rj.bd.dormitory.dao.DormitoryMapper.queryDormitoryById"))
+	})
 	@Select("select *from user where u_id = #{u_id}")
-	User queryUserById(int u_id);
+	List<User> queryUserById(int u_id);
 	@Select("select * from dormitory")
 	void queryDormitory();
 	
-	@Update("update user set u_name=#{u_name},u_password=#{u_password},u_tel=#{u_tel},dormitory_id=#{dormitory_id} where u_id =#{u_id}")
+	@Update("update user set u_name=#{u_name},u_password=#{u_password},u_tel=#{u_tel},dormitory_id=#{dormitory.dormitory_id} where u_id =#{u_id}")
 	void update(User user);
 	
 	
-	@Insert("insert into user(u_name,u_password,u_tel,dormitory_id) values (#{u_name},#{u_password},#{u_tel},#{dormitory_id})")
+	@Insert("insert into user(u_name,u_password,u_tel,dormitory_id) values (#{u_name},#{u_password},#{u_tel},#{dormitory.dormitory_id})")
 	void add(User user);
 
 	

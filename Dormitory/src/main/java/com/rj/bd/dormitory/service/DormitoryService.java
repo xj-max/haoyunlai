@@ -1,6 +1,7 @@
 package com.rj.bd.dormitory.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,10 @@ public class DormitoryService {
 	public void add(Dormitory dormitory) {
 		dormitoryMapper.add(dormitory);
 		
+	}
+
+	public List<Map<String, Object>> queryCount() {
+		return dormitoryMapper.queryCount();
 	}
 	
 	

@@ -39,18 +39,24 @@ public class DormitoryController {
 	 */
 	@RequestMapping("/query")
 	public Map<String, Object> queryDormitory(HttpServletRequest request){
-	Map<String, Object> json = new HashMap<String, Object>();
-	List<Dormitory> list = dormitoryService.queryAll();
-	for (Dormitory dormitory : list) {
-		System.out.println(dormitory);
-	}
-	if (list==null|| list.size()==0) {
-		json.put("code", -1);
-		json.put("msg", "还没有宿舍楼请加急建设");
-		return json;
-	}
+		System.out.println("query");
+		Map<String, Object> json = new HashMap<String, Object>();
+		List<Map<String, Object>> sum= dormitoryService.queryCount();
+		System.out.println("1231456");
+		List<Dormitory> list = dormitoryService.queryAll();
+	
+		for (Dormitory dormitory : list) {
+			System.out.println(dormitory);
+		}
+		if (list==null|| list.size()==0) {
+			json.put("code", -1);
+			json.put("msg", "还没有宿舍楼请加急建设");
+			return json;
+		}
 		json.put("code", 200);
 		json.put("msg", "查询成功");
+		json.put("data", list);
+		json.put("sum", sum);
 		return json;
 	}
 	
@@ -89,16 +95,17 @@ public class DormitoryController {
 	 */
 	@RequestMapping("/add")
 	public Map<String, Object> add( String dormitory_name,String dormitory_count, HttpServletRequest request){
+		System.out.println("add");
 		Map<String, Object> json = new HashMap<String, Object>();
 		//String dormitory_name = request.getParameter("dormitory_name");
 		//String num = request.getParameter("dormitory_count");
-		//Integer dormitory_count=Integer.parseInt(num);
+		Integer dormitory_count1=Integer.parseInt(dormitory_count);
 		if (dormitory_name==null || dormitory_name.equals("")) {
 			json.put("code", -1);
 			json.put("msg", "请输入宿舍楼名字");
 			return json;
 		}
-		if (dormitory_count == null || dormitory_count.equals("")) {
+		if (dormitory_count == null || dormitory_count.equals("") || dormitory_count1 >1300) {
 			
 			json.put("code", -1);
 			json.put("msg", "请输入宿舍楼层总容量");
